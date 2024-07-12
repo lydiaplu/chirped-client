@@ -23,3 +23,6 @@ Chirped Client is the frontend of an internal social networking system inspired 
 - **Redux Store**: Manages application state with Redux.
 - **API Integration**: Fetches data from the backend using asynchronous actions.
 - **Routing**: Manages navigation within the app using React Router.
+
+
+![chirped](https://github.com/user-attachments/assets/ba4e9985-55fe-46d4-a450-a732e81562ea)
