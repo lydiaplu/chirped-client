@@ -4,8 +4,8 @@ export async function addTweet(tweet) {
     const formData = new FormData();
     formData.append("userId", tweet.userId);
     formData.append("content", tweet.content);
-    
-    if(tweet.images)
+
+    if (tweet.images)
         formData.append("images", tweet.images);
 
     const response = await api.post("/tweets/add/new-tweet", formData, {
@@ -24,7 +24,7 @@ export async function addTweet(tweet) {
 export async function editTweet(tweet) {
     const formData = new FormData();
     formData.append("content", tweet.content);
-    if(tweet.images)
+    if (tweet.images)
         formData.append("images", tweet.images);
 
     const response = await api.put(`/tweets/update/${tweet.tweetId}`, formData, {
@@ -61,16 +61,19 @@ export async function getTweetById(tweetId) {
     }
 }
 
-export async function getLatestTweetsByUserAndFollowers(userId,lastSeenTimestamp, page, size) {
+export async function getLatestTweetsByUserAndFollowers(userId, lastSeenTimestamp, page, size) {
     try {
+
         const result = await api.get(`/tweets/newest?userId=${userId}&lastSeenTimestamp=${lastSeenTimestamp}&page=${page}&size=${size}`);
+        console.log("getLatestTweetsByUserAndFollowers: ", `/tweets/newest?userId=${userId}&lastSeenTimestamp=${lastSeenTimestamp}&page=${page}&size=${size}`);
+        console.log("getLatestTweetsByUserAndFollowers result: ", result)
         return result.data;
     } catch (error) {
         throw new Error(`Error fetching ${error.message}`)
     }
 }
 
-export async function findLatestTweetsByUser(userId,lastSeenTimestamp, page, size) {
+export async function findLatestTweetsByUser(userId, lastSeenTimestamp, page, size) {
     try {
         const result = await api.get(`/tweets/${userId}/newest?lastSeenTimestamp=${lastSeenTimestamp}&page=${page}&size=${size}`);
         return result.data;
@@ -79,7 +82,7 @@ export async function findLatestTweetsByUser(userId,lastSeenTimestamp, page, siz
     }
 }
 
-export async function findLatestTweetsByUsername(username,lastSeenTimestamp, page, size) {
+export async function findLatestTweetsByUsername(username, lastSeenTimestamp, page, size) {
     try {
         const result = await api.get(`/tweets/byusername/${username}/newest?lastSeenTimestamp=${lastSeenTimestamp}&page=${page}&size=${size}`);
         return result.data;

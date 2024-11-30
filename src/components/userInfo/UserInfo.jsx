@@ -14,7 +14,6 @@ import { useSelector } from 'react-redux';
 
 export default function UserInfo() {
     const currentUser = useSelector(state => state.user.currentUser);
-
     const [user, setUser] = useState();
 
     useEffect(() => {
